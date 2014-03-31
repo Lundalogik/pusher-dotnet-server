@@ -39,7 +39,7 @@ namespace PusherRESTDotNet
 		/// <param name="request"></param>
 		public void Trigger(PusherRequest request)
 		{
-			var requestUrl = String.Format("http://{0}{1}?{2}&auth_signature={3}",
+			var requestUrl = String.Format("https://{0}{1}?{2}&auth_signature={3}",
 											_host,
 											GetBaseUri(request),
 											GetQueryString(request),
