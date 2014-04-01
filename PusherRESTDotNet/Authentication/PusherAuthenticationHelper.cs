@@ -28,8 +28,9 @@ namespace PusherRESTDotNet.Authentication
 
         public string CreateAuthenticatedString(string socketId, string channelName, PresenceChannelData channelData)
         {
-            string channel = (channelData == null?"":JsonConvert.SerializeObject(channelData));
-            string auth = AuthSignatureHelper.GetAuthString(socketId + ":" + channelName + ":" + channel, applicationSecret);
+            string channel = (channelData == null ? "" : JsonConvert.SerializeObject(channelData));
+            string auth = AuthSignatureHelper.GetAuthString(socketId + ":" + channelName + ":" + channel,
+                applicationSecret);
 
             AuthData data = new AuthData();
             data.auth = applicationKey + ":" + auth;

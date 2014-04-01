@@ -6,9 +6,9 @@ using PusherRESTDotNet.Authentication;
 
 namespace PusherRESTDotNet.Tests.UnitTests
 {
-	[TestFixture]
-	public class PusherProviderTests
-	{
+    [TestFixture]
+    public class PusherProviderTests
+    {
         [Test]
         public void AuthenticationStringIsCorrectlyFormedForPrivateChannel()
         {
@@ -37,7 +37,7 @@ namespace PusherRESTDotNet.Tests.UnitTests
             var presenceChannelData = new PresenceChannelData()
             {
                 user_id = "leggetter",
-                user_info = new { name = "Phil Leggetter", twitter = "@leggetter" }
+                user_info = new {name = "Phil Leggetter", twitter = "@leggetter"}
             };
             var socketId = "socket_id";
             var helper = new PusherAuthenticationHelper(appId, appKey, appSecret);
@@ -49,5 +49,5 @@ namespace PusherRESTDotNet.Tests.UnitTests
             Assert.IsNotNullOrEmpty(auth);
             Assert.AreEqual(expected, auth);
         }
-	}
+    }
 }
