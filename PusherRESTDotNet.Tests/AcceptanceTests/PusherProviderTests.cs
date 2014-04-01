@@ -31,7 +31,7 @@ namespace PusherRESTDotNet.Tests.AcceptanceTests
 		public void CanTriggerPush()
 		{
 			SetupDefaultProvider();
-			var request = new TestPusherRequest("test_channel", "my_event", @"{""some"":""data""}");
+			var request = new RawPusherRequest("test_channel", "my_event", @"{""some"":""data""}");
 
 			_defaultProvider.Trigger(request);
 		}
@@ -41,7 +41,7 @@ namespace PusherRESTDotNet.Tests.AcceptanceTests
         public void CanSendPercentageSignInEventMessage()
         {
             SetupDefaultProvider();
-            var request = new TestPusherRequest("test_channel", "my_event", @"{""some"":""data %""}");
+            var request = new RawPusherRequest("test_channel", "my_event", @"{""some"":""data %""}");
 
             _defaultProvider.Trigger(request);
         }
@@ -63,26 +63,10 @@ namespace PusherRESTDotNet.Tests.AcceptanceTests
 		[ExpectedException(typeof(WebException))]
 		public void BlowsUpOnTriggerPushWithBadCredentials()
 		{
-			var request = new TestPusherRequest("test_channel", "my_event", @"{""some"":""data""}");
+			var request = new RawPusherRequest("test_channel", "my_event", @"{""some"":""data""}");
 
 			var provider = new PusherProvider("meh", "foo", "bar");
 			provider.Trigger(request);
-		}
-
-		public class TestPusherRequest : PusherRequest
-		{
-			private readonly string _jsonData;
-
-			public TestPusherRequest(string channelName, string eventName, string jsonData)
-				: base(channelName, eventName)
-			{
-				_jsonData = jsonData;
-			}
-
-			public override string JsonData
-			{
-				get { return _jsonData; }
-			}
 		}
 	}
 }

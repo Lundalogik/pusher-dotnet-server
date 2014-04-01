@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Script.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace PusherRESTDotNet
 {
@@ -13,7 +12,7 @@ namespace PusherRESTDotNet
 		public ObjectPusherRequest(string channelName, string eventName, object data)
 			: base(channelName, eventName)
 		{
-			_serializedData = new JavaScriptSerializer().Serialize(data);
+			_serializedData = JsonConvert.SerializeObject(data);
 		}
 
 		public override string JsonData

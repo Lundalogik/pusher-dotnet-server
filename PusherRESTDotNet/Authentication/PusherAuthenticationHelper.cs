@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace PusherRESTDotNet.Authentication
 {
@@ -19,9 +15,9 @@ namespace PusherRESTDotNet.Authentication
             this.applicationSecret = applicationSecret;
         }
 
-        public string CreateAuthenticatedString(string socketID, string channelName)
+        public string CreateAuthenticatedString(string socketId, string channelName)
         {
-            string auth = AuthSignatureHelper.GetAuthString(socketID + ":" + channelName, applicationSecret);
+            string auth = AuthSignatureHelper.GetAuthString(socketId + ":" + channelName, applicationSecret);
 
             AuthData data = new AuthData();
             data.auth = applicationKey + ":" + auth;
@@ -30,10 +26,10 @@ namespace PusherRESTDotNet.Authentication
             return json;
         }
 
-        public string CreateAuthenticatedString(string socketID, string channelName, PresenceChannelData channelData)
+        public string CreateAuthenticatedString(string socketId, string channelName, PresenceChannelData channelData)
         {
             string channel = (channelData == null?"":JsonConvert.SerializeObject(channelData));
-            string auth = AuthSignatureHelper.GetAuthString(socketID + ":" + channelName + ":" + channel, applicationSecret);
+            string auth = AuthSignatureHelper.GetAuthString(socketId + ":" + channelName + ":" + channel, applicationSecret);
 
             AuthData data = new AuthData();
             data.auth = applicationKey + ":" + auth;
