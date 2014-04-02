@@ -4,18 +4,16 @@ namespace PusherRESTDotNet.Authentication
 {
     public class PusherAuthenticationHelper
     {
-        private string applicationId;
         private string applicationKey;
         private string applicationSecret;
 
-        public PusherAuthenticationHelper(string applicationId, string applicationKey, string applicationSecret)
+        public PusherAuthenticationHelper(string applicationKey, string applicationSecret)
         {
-            this.applicationId = applicationId;
             this.applicationKey = applicationKey;
             this.applicationSecret = applicationSecret;
         }
 
-        public string CreateAuthenticatedString(string socketId, string channelName)
+        public string CreateAuthenticatedString(string channelName, string socketId)
         {
             string auth = AuthSignatureHelper.GetAuthString(socketId + ":" + channelName, applicationSecret);
 
@@ -26,7 +24,7 @@ namespace PusherRESTDotNet.Authentication
             return json;
         }
 
-        public string CreateAuthenticatedString(string socketId, string channelName, PresenceChannelData channelData)
+        public string CreateAuthenticatedString(string channelName, string socketId, PresenceChannelData channelData)
         {
             string channel = (channelData == null ? "" : JsonConvert.SerializeObject(channelData));
             string auth = AuthSignatureHelper.GetAuthString(socketId + ":" + channelName + ":" + channel,

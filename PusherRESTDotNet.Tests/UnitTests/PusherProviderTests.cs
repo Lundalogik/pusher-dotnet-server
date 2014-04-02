@@ -17,8 +17,8 @@ namespace PusherRESTDotNet.Tests.UnitTests
             var appSecret = "myAppSecret";
             var channelName = "private-channel";
             var socketId = "socket_id";
-            var helper = new PusherAuthenticationHelper(appId, appKey, appSecret);
-            var expected = helper.CreateAuthenticatedString(socketId, channelName);
+            var helper = new PusherAuthenticationHelper(appKey, appSecret);
+            var expected = helper.CreateAuthenticatedString(channelName, socketId);
 
             IPusherProvider provider = new PusherProvider(appId, appKey, appSecret);
             string auth = provider.Authenticate(channelName, socketId);
@@ -40,8 +40,8 @@ namespace PusherRESTDotNet.Tests.UnitTests
                 user_info = new {name = "Phil Leggetter", twitter = "@leggetter"}
             };
             var socketId = "socket_id";
-            var helper = new PusherAuthenticationHelper(appId, appKey, appSecret);
-            string expected = helper.CreateAuthenticatedString(socketId, channelName, presenceChannelData);
+            var helper = new PusherAuthenticationHelper(appKey, appSecret);
+            string expected = helper.CreateAuthenticatedString(channelName, socketId, presenceChannelData);
 
             IPusherProvider provider = new PusherProvider(appId, appKey, appSecret);
             string auth = provider.Authenticate(channelName, socketId, presenceChannelData);

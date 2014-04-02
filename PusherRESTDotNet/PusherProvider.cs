@@ -31,7 +31,7 @@ namespace PusherRESTDotNet
             _applicationKey = applicationKey;
             _applicationId = applicationId;
             _webProxy = webProxy;
-            _authHelper = new PusherAuthenticationHelper(_applicationId, _applicationKey, _applicationSecret);
+            _authHelper = new PusherAuthenticationHelper(_applicationKey, _applicationSecret);
         }
 
         /// <summary>
@@ -99,13 +99,13 @@ namespace PusherRESTDotNet
 
         public string Authenticate(string channelName, string socketId)
         {
-            return _authHelper.CreateAuthenticatedString(socketId, channelName);
+            return _authHelper.CreateAuthenticatedString(channelName, socketId);
         }
 
 
         public string Authenticate(string channelName, string socketId, PresenceChannelData presenceChannelData)
         {
-            return _authHelper.CreateAuthenticatedString(socketId, channelName, presenceChannelData);
+            return _authHelper.CreateAuthenticatedString(channelName, socketId, presenceChannelData);
         }
     }
 }
