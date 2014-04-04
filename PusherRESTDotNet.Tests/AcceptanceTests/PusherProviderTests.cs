@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Net;
 using NUnit.Framework;
-using PusherRESTDotNet.Authentication;
 
 namespace PusherRESTDotNet.Tests.AcceptanceTests
 {
@@ -52,6 +51,19 @@ namespace PusherRESTDotNet.Tests.AcceptanceTests
         {
             SetupDefaultProvider();
             var request = new ObjectPusherRequest("test_channel", "my_event", new
+            {
+                some = "data"
+            });
+
+            _defaultProvider.Trigger(request);
+        }
+
+        [Test]
+        [Explicit("Set your credentials in app.config for this test to pass")]
+        public void CanTriggerPrivate()
+        {
+            SetupDefaultProvider();
+            var request = new ObjectPusherRequest("private-test_channel", "my_event", new
             {
                 some = "data"
             });

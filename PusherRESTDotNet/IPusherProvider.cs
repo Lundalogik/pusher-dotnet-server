@@ -1,6 +1,4 @@
-﻿using PusherRESTDotNet.Authentication;
-
-namespace PusherRESTDotNet
+﻿namespace PusherRESTDotNet
 {
     public interface IPusherProvider
     {

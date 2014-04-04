@@ -1,8 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Net;
-using NUnit.Framework;
-using PusherRESTDotNet.Authentication;
+﻿using NUnit.Framework;
 
 namespace PusherRESTDotNet.Tests.UnitTests
 {
@@ -17,7 +13,7 @@ namespace PusherRESTDotNet.Tests.UnitTests
             var appSecret = "myAppSecret";
             var channelName = "private-channel";
             var socketId = "socket_id";
-            var helper = new PusherAuthenticationHelper(appKey, appSecret);
+            var helper = new Authentication(appKey, appSecret);
             var expected = helper.CreateAuthenticatedString(channelName, socketId);
 
             IPusherProvider provider = new PusherProvider(appId, appKey, appSecret);
@@ -40,7 +36,7 @@ namespace PusherRESTDotNet.Tests.UnitTests
                 user_info = new {name = "Phil Leggetter", twitter = "@leggetter"}
             };
             var socketId = "socket_id";
-            var helper = new PusherAuthenticationHelper(appKey, appSecret);
+            var helper = new Authentication(appKey, appSecret);
             string expected = helper.CreateAuthenticatedString(channelName, socketId, presenceChannelData);
 
             IPusherProvider provider = new PusherProvider(appId, appKey, appSecret);

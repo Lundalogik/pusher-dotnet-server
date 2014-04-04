@@ -65,11 +65,9 @@
   <ItemGroup>
     <Compile Include="ObjectPusherRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Authentication\AuthData.cs" />
-    <Compile Include="Authentication\AuthSignatureHelper.cs" />
-    <Compile Include="Authentication\BasicUserInfo.cs" />
-    <Compile Include="Authentication\PresenceChannelData.cs" />
-    <Compile Include="Authentication\PusherAuthenticationHelper.cs" />
+    <Compile Include="AuthData.cs" />
+    <Compile Include="PresenceChannelData.cs" />
+    <Compile Include="Authentication.cs" />
     <Compile Include="IPusherProvider.cs" />
     <Compile Include="PusherProvider.cs" />
     <Compile Include="PusherRequest.cs" />
